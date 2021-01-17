@@ -26,6 +26,7 @@ namespace Game
 		void CreateBackground();
 		void CreateEnemy();
 		void CreateObstacle(float x_cord, float y_cord, float width, float height, std::string object_type);
+		void CreateBall();
 
 	};
 }
