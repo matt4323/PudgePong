@@ -5,6 +5,7 @@
 #include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
 #include "../GameEngine/EntitySystem/Components/EnemyMovementComponent.h"
 #include "../GameEngine/EntitySystem/Components/PongBallComponent.h"
+#include "../GameEngine/EntitySystem/Components/EnemyAbilityComponent.h"
 
 using namespace Game;
 
@@ -39,7 +40,10 @@ void GameBoard::CreateEnemy(){
 
     Game::EnemyMovementComponent* enemyMovement = static_cast<Game::EnemyMovementComponent*>(m_enemy->AddComponent<Game::EnemyMovementComponent>());
 
+    Game::EnemyAbilityComponent* enemyAbility = static_cast<Game::EnemyAbilityComponent*>(m_enemy->AddComponent<Game::EnemyAbilityComponent>());
+
     enemyMovement->player = m_player;
+    enemyAbility->player = m_player;
 
     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_enemy->AddComponent<GameEngine::SpriteRenderComponent>());
 
