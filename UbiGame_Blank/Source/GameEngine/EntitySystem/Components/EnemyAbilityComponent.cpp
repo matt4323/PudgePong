@@ -4,6 +4,7 @@
 #include <stdlib.h> //needed for rand
 #include <iostream>
 #include "GameEngine/GameEngineMain.h" 
+#include "CollidablePhysicsComponent.h"
 
 using namespace Game;
 
@@ -48,6 +49,10 @@ void EnemyAbilityComponent::Update()
             e->SetSize(sf::Vector2f(32.0f, 32.0f));
             hook = static_cast<HookComponent*>(e->AddComponent<HookComponent>());
 
+            //GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+            //(e->AddComponent<GameEngine::CollidablePhysicsComponent>());
+            //collisionTyper->type = "EnemyHook";
+
             GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(e->AddComponent<GameEngine::SpriteRenderComponent>());
 
             spriteRender->SetFillColor(sf::Color::Transparent);
@@ -89,6 +94,11 @@ void EnemyAbilityComponent::Update()
         e->SetSize(sf::Vector2f(64.0f, 64.0f)); // <-- Make the square bigger
         NetComponent* net = static_cast<NetComponent*>
         (e->AddComponent<NetComponent>());
+
+
+            GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+            (e->AddComponent<GameEngine::CollidablePhysicsComponent>());
+            collisionTyper->type = "EnemyNet";
 
         GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
         

@@ -5,6 +5,7 @@
 #include <SFML/Window/Window.hpp>
 #include <iostream>
 #include "GameEngine/GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
+#include "CollidablePhysicsComponent.h"
 
 using namespace Game;
 
@@ -57,6 +58,9 @@ void PlayerAbilityComponent::Update()
 
 
                     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(e->AddComponent<GameEngine::SpriteRenderComponent>());
+
+                    GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>(e->AddComponent<GameEngine::CollidablePhysicsComponent>());
+                    collisionTyper->type="PlayerHook";
 
                     spriteRender->SetFillColor(sf::Color::Transparent);
                     spriteRender->SetTexture(GameEngine::eTexture::Player);
@@ -119,7 +123,7 @@ void PlayerAbilityComponent::Update()
     }
 
     if (GetEntity()->dodging) {
-        
+
         GetEntity()->dodgeDown = 10.f;
     }
 

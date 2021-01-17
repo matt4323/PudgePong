@@ -24,7 +24,7 @@ namespace Game
 
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
-		GameEngine::Entity* m_enemy;
+		//GameEngine::Entity* m_enemy;
 		GameEngine::Entity* m_text;
 		void CreateText();
 		void CreateBackground();
