@@ -10,6 +10,7 @@ namespace Game
     {
     private:
             HookComponent* hook = nullptr;
+            float dodgeTime = 0.f;
     public:
 
         virtual void Update() override;

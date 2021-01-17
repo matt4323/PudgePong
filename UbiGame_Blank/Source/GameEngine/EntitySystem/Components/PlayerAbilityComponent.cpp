@@ -123,6 +123,14 @@ void PlayerAbilityComponent::Update()
     }
 
     if (GetEntity()->dodging) {
+        dodgeTime -= dt;
+        GetEntity()->isAbility = true;
+        GetEntity()->SetRotation(GetEntity()->GetRot() + 67);
+
+        if (dodgeTime < 0.f) {
+            GetEntity()->dodging = false;
+            GetEntity()->isAbility = false;
+        }
 
         GetEntity()->dodgeDown = 10.f;
     }
