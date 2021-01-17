@@ -47,11 +47,25 @@ void GameBoard::CreateEnemy(){
     GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
         (m_enemy->AddComponent<GameEngine::CollidableComponent>());
     collisionTyper->type="pudge"; //give enemy pudge(s) collision type of "pudge"
+}
 
-    
+void GameBoard::CreateBall(){
+    Entity* ball = new GameEngine::Entity();
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(ball);
+    ball->SetPos(sf::Vector2f(350.0f, (float)(rand() % 500 + 100)));
+    ball->SetSize(sf::Vector2f(32.0f, 32.0f));
 
+    Game::PongBallComponent* pong = static_cast<Game::PongBallComponent*>(m_enemy->AddComponent<Game::PongBallComponent>());
 
-   
+    enemyMovement->player = m_player;
+
+    GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_enemy->AddComponent<GameEngine::SpriteRenderComponent>());
+
+    spriteRender->SetTexture(GameEngine::eTexture::Player);
+
+    GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
+        (m_enemy->AddComponent<GameEngine::CollidableComponent>());
+    collisionTyper->type="pudge"; //give enemy pudge(s) collision type of "pudge"
 }
 
 void GameBoard::CreateBackground() {
