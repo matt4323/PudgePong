@@ -5,6 +5,7 @@
 #include "PongBallComponent.h"
 
 #include <vector>
+#include <iostream>
 
 using namespace GameEngine;
 
@@ -63,12 +64,13 @@ void CollidablePhysicsComponent::Update()
 				else
 					pos.y += intersection.height;
 			}
-			if ((colComponent->type =="wall" || colComponent->type =="river") && type=="pudge")
+			if ((colComponent->type =="wall0" || colComponent->type =="wall1" || colComponent->type =="wall2" 
+			|| colComponent->type =="wall3" || colComponent->type =="river") && type=="pudge")
 				GetEntity()->SetPos(pos);
-			else if (colComponent->type =="pudge" && (colComponent->type =="wall" || colComponent->type =="river"))
+			else if (colComponent->type =="pudge" && (type =="wall0" || type =="wall1" 
+			|| type =="wall2" || type =="wall3" || type =="river"))
 				GetEntity()->SetPos(pos);
 			
-			else
 				sort_collision(colComponent->type);
 		
 		}
@@ -77,17 +79,14 @@ void CollidablePhysicsComponent::Update()
 
 void CollidablePhysicsComponent::sort_collision(std::string type1) 
 {
-	if (type1 == "wall" && type =="pongball") {
-		if (GetEntity()->GetPos().x <= 30 && GetEntity()->GetSize().x <= 100 ) {
-			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 0;
-		} else if (GetEntity()->GetPos().x <= 30 && GetEntity()->GetSize().x >= 500 ) {
-			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 1;
-		} else if (GetEntity()->GetPos().x >= 500 && GetEntity()->GetSize().x <= 100 ) {
-			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 2;
-		} else if (GetEntity()->GetPos().x >= 500 && GetEntity()->GetSize().x >= 500 ) {
-			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
-		}
-
+	if (type1 == "wall0" && type =="pongball") {
+		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 0;
+	} else if (type1 == "wall1" && type =="pongball") {
+		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 1;
+	} else if (type1 == "wall2" && type =="pongball") {
+		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 2;
+	} else if (type1 == "wall3" && type =="pongball") {
+		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
 	} else if (type1 == "pudge" && type == "hook") {
 
 	} else if (type1 == "hook" && type =="pudge") {

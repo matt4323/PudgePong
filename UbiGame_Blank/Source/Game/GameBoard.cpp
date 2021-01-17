@@ -56,7 +56,7 @@ void GameBoard::CreateBall(){
     ball->SetPos(sf::Vector2f(350.0f, (float)(rand() % 500 + 100)));
     ball->SetSize(sf::Vector2f(32.0f, 32.0f));
 
-    Game::PongBallComponent* pong = static_cast<Game::PongBallComponent*>(m_enemy->AddComponent<Game::PongBallComponent>());
+    Game::PongBallComponent* pong = static_cast<Game::PongBallComponent*>(ball->AddComponent<Game::PongBallComponent>());
     pong->collided = -1;
     pong->destination_x = 0.4;
     pong->destination_y = 0.91652;
@@ -65,8 +65,8 @@ void GameBoard::CreateBall(){
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
 
-    GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
-        (ball->AddComponent<GameEngine::CollidableComponent>());
+    GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+        (ball->AddComponent<GameEngine::CollidablePhysicsComponent>());
     collisionTyper->type="pongball"; //give enemy pudge(s) collision type of "pudge"
 }
 
@@ -94,10 +94,10 @@ GameBoard::GameBoard()
     
 
     //ENVIRONMENTAL HITBOXES 
-    CreateObstacle(0,350,50,700,"wall"); //left wall hitbox
-    CreateObstacle(350,0,700,50,"wall"); //top wall hitbox
-    CreateObstacle(700,350,50,700,"wall"); //right wall hitbox
-    CreateObstacle(350,700,700,50,"wall"); //bottom wall hitbox
+    CreateObstacle(0,350,50,700,"wall0"); //left wall hitbox
+    CreateObstacle(350,0,700,50,"wall1"); //top wall hitbox
+    CreateObstacle(700,350,50,700,"wall2"); //right wall hitbox
+    CreateObstacle(350,700,700,50,"wall3"); //bottom wall hitbox
     CreateObstacle(350,350,145,700,"river"); //River hitbox
     
 }
@@ -146,7 +146,7 @@ void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float hei
         collisionTyper->type = "river"; //if river, no collisions
                                            // Give collisionComponent type: river
     else
-        collisionTyper->type = "wall"; //if wall, no collisions
+        collisionTyper->type = object_type; //if wall, no collisions
                                            // Give collisionComponent type: wall
 
 

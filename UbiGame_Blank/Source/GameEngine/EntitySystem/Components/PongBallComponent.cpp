@@ -21,24 +21,28 @@ void PongBallComponent::Update()
     sf::Vector2f displacement{ 0.0f,0.0f };
 
     //The amount of speed that we will apply when input is received
-    float inputAmount = 165.0f;
+    float inputAmount = 195.0f;
+
+    if (collided == 0) {
+        abs(destination_x);
+        destination_x *= -1;
+    } else if (collided == 1) {
+        abs(destination_y);
+        destination_y *= -1;
+    } else if (collided == 2) {
+        abs(destination_x);
+        destination_x *= -1;
+    } else if (collided == 3) {
+        abs(destination_y);
+        destination_y *= -1;
+    } 
+    collided = -1;
 
     displacement.x += inputAmount * destination_x * dt;
     displacement.y += inputAmount * destination_y * dt;
 
-    if (collided == 0) {
-        destination_x *= -1;
-    } else if (collided == 1) {
-        destination_y *= -1;
-    } else if (collided == 2) {
-        destination_x *= -1;
-    } else if (collided == 2) {
-        destination_y *= -1;
-    }
-    collided = -1;
-
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
-
+    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*25);
 }
 
 void PongBallComponent::OnAddToWorld() {}
