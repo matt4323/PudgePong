@@ -120,7 +120,7 @@ void PlayerAbilityComponent::Update()
 
     if (GetEntity()->dodging) {
 
-            GetEntity()->dodgeDown = 10.f;
+        GetEntity()->dodgeDown = 10.f;
     }
 
     if (GetEntity()->hookDown > 0.f) {

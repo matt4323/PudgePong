@@ -2,6 +2,7 @@
 
 #include "GameEngine/Util/CollisionManager.h"
 #include "GameEngine/EntitySystem/Entity.h"
+#include "PongBallComponent.h"
 
 #include <vector>
 
@@ -76,12 +77,18 @@ void CollidablePhysicsComponent::Update()
 
 void CollidablePhysicsComponent::sort_collision(std::string type1) 
 {
-	if (type1 == "pongball" && type =="wall") {
+	if (type1 == "wall" && type =="pongball") {
+		if (GetEntity()->GetPos().x <= 30 && GetEntity()->GetSize().x <= 100 ) {
+			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 0;
+		} else if (GetEntity()->GetPos().x <= 30 && GetEntity()->GetSize().x >= 500 ) {
+			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 1;
+		} else if (GetEntity()->GetPos().x >= 500 && GetEntity()->GetSize().x <= 100 ) {
+			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 2;
+		} else if (GetEntity()->GetPos().x >= 500 && GetEntity()->GetSize().x >= 500 ) {
+			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
+		}
 
-
-	} else if (type1 == "wall" && type =="pongball") {
-
-	} else if (type1 == "pudge" && type =="hook") {
+	} else if (type1 == "pudge" && type =="hookEnemy") {
 
 	} else if (type1 == "hook" && type =="pudge") {
 
@@ -92,7 +99,7 @@ void CollidablePhysicsComponent::sort_collision(std::string type1)
 	} else if (type1 == "pudge" && type =="pongball") {
 
 	} else if (type1 == "pongball" && type =="pudge") {
-		
+
 	}
 				
 }

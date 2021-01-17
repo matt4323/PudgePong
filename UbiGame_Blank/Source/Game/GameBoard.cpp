@@ -57,6 +57,9 @@ void GameBoard::CreateBall(){
     ball->SetSize(sf::Vector2f(32.0f, 32.0f));
 
     Game::PongBallComponent* pong = static_cast<Game::PongBallComponent*>(m_enemy->AddComponent<Game::PongBallComponent>());
+    pong->collided = -1;
+    pong->destination_x = 0.4;
+    pong->destination_y = 0.91652;
 
     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(ball->AddComponent<GameEngine::SpriteRenderComponent>());
 
@@ -87,7 +90,7 @@ GameBoard::GameBoard()
 	CreatePlayer();
     CreateBackground();
     CreateEnemy();
-
+    CreateBall();
     
 
     //ENVIRONMENTAL HITBOXES 
