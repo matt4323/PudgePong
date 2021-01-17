@@ -3,6 +3,11 @@
 #include "GameEngine/Util/CollisionManager.h"
 #include "GameEngine/EntitySystem/Entity.h"
 #include "PongBallComponent.h"
+#include "PlayerMovementComponent.h"
+#include "HookComponent.h"
+#include "EnemyMovementComponent.h"
+#include "NetComponent.h"
+
 
 #include <vector>
 #include <iostream>
@@ -71,33 +76,34 @@ void CollidablePhysicsComponent::Update()
 			|| type =="wall2" || type =="wall3" || type =="river"))
 				GetEntity()->SetPos(pos);
 			
-				sort_collision(colComponent->type);
+				sort_collision(colComponent);
 		
 		}
 	}
 }
 
-void CollidablePhysicsComponent::sort_collision(std::string type1) 
+void CollidablePhysicsComponent::sort_collision(CollidableComponent* collider) 
 {
-	if (type1 == "wall0" && type =="pongball") {
+	if (collider->type == "wall0" && type =="pongball") {
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 0;
-	} else if (type1 == "wall1" && type =="pongball") {
+	} else if (collider->type == "wall1" && type =="pongball") {
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 1;
-	} else if (type1 == "wall2" && type =="pongball") {
+	} else if (collider->type == "wall2" && type =="pongball") {
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 2;
-	} else if (type1 == "wall3" && type =="pongball") {
+	} else if (collider->type == "wall3" && type =="pongball") {
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
-	} else if (type1 == "pudge" && type == "hook") {
+	} else if (collider->type == "pudge" && type == "hook") {
+		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->death = true;
+		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->hook = GetEntity()->GetComponent<Game::HookComponent>();
+	} else if (collider->type == "hook" && type =="pudge") {
 
-	} else if (type1 == "hook" && type =="pudge") {
+	} else if (collider->type == "hook" && type =="pongball") {
 
-	} else if (type1 == "hook" && type =="pongball") {
+	} else if (collider->type == "pongball" && type =="hook") {
 
-	} else if (type1 == "pongball" && type =="hook") {
+	} else if (collider->type == "pudge" && type =="pongball") {
 
-	} else if (type1 == "pudge" && type =="pongball") {
-
-	} else if (type1 == "pongball" && type =="pudge") {
+	} else if (collider->type == "pongball" && type =="pudge") {
 
 	}
 				

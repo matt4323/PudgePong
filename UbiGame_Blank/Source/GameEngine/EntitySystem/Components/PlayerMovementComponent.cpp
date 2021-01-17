@@ -11,8 +11,14 @@ using namespace Game;
 
 void PlayerMovementComponent::Update()
 {
+    if (GetEntity()->dodging) {
+        death = false;
+    }
+
+    if (!death) {
     Component::Update();
 
+    
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
@@ -68,6 +74,15 @@ void PlayerMovementComponent::Update()
     
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+    } else if (hook != nullptr) {
+        GetEntity()->isAbility = true;
+        GetEntity()->netting = false;
+        GetEntity()->dodging = false;
+        GetEntity()->hooking = false;
+        GetEntity()->SetPosition(hook->GetEntity()->GetPos());
+    } else {
+        
+    }
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}

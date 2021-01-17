@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Component.h"
+#include "HookComponent.h"
 
 namespace Game
 {
@@ -12,5 +13,7 @@ namespace Game
     public:
         virtual void Update() override;
         virtual void OnAddToWorld() override;
+        bool death = false;
+        Game::HookComponent*hook = nullptr;
     };
 }

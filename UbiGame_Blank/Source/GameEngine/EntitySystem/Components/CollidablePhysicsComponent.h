@@ -16,7 +16,7 @@ namespace GameEngine
 		
 		virtual void Update() override;
 
-		void sort_collision(std::string type1);
+		void sort_collision(CollidableComponent* collider);
 	};
 }
 

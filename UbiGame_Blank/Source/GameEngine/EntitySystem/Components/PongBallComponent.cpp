@@ -21,7 +21,7 @@ void PongBallComponent::Update()
     sf::Vector2f displacement{ 0.0f,0.0f };
 
     //The amount of speed that we will apply when input is received
-    float inputAmount = 195.0f;
+    float inputAmount = 145.0f;
 
     if (collided == 0) {
         abs(destination_x);
@@ -42,7 +42,7 @@ void PongBallComponent::Update()
     displacement.y += inputAmount * destination_y * dt;
 
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
-    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*25);
+    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*75);
 }
 
 void PongBallComponent::OnAddToWorld() {}
