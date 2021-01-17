@@ -134,7 +134,17 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	numberOfEnemies = enemyDeathCount/5 + 1;
+    if (currentEnemies == 0) {
+        currentEnemies = enemyDeathCount/5 + 1;
+
+        for (int i = 0; i < currentEnemies; i++) {
+            CreateEnemy();
+        }
+
+        if ( enemyDeathCount % 10 == 0 ) {
+            CreateBall();
+        }
+    }
 }
 
 void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 

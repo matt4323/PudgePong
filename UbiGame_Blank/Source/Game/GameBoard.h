@@ -17,6 +17,8 @@ namespace Game
 		virtual ~GameBoard();
 		int enemyDeathCount = 0;
 		int numberOfEnemies = 1;
+		int currentEnemies = 1;
+		int currentPongs = 1;
 		void Update();		
 		bool IsGameOver() { return false; }
 

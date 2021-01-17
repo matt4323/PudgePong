@@ -86,6 +86,7 @@ void EnemyMovementComponent::Update()
         
         //GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
         gameBoard->enemyDeathCount ++;
+        gameBoard->currentEnemies --;
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }
