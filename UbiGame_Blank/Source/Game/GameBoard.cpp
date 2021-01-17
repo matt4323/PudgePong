@@ -45,8 +45,8 @@ void GameBoard::CreateEnemy(){
 
     spriteRender->SetTexture(GameEngine::eTexture::Player);
 
-    GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
-        (m_enemy->AddComponent<GameEngine::CollidableComponent>());
+    GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+        (m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>());
     collisionTyper->type="pudge"; //give enemy pudge(s) collision type of "pudge"
 }
 
