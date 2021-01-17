@@ -18,11 +18,12 @@ void PlayerMovementComponent::Update()
 
     if (!death) {
     
-    Component::Update();
+
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
     
         if (rooted <= 0.f) {
+                Component::Update();
     sf::Vector2f displacement{ 0.0f,0.0f };
 
     sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
@@ -35,6 +36,9 @@ void PlayerMovementComponent::Update()
         destination_x = mousePos.x;
         destination_y = mousePos.y;
         inputAmount = 50.0f;
+        if (rooted > 0.f) {
+            inputAmount = 0.f;
+        }
         pos_diff = destination - GetEntity()->GetPos() - windowPos;
 
         sf::Vector2f unit{0.f,1.f};
@@ -77,7 +81,8 @@ void PlayerMovementComponent::Update()
     } else if (false) {
 
     } else {
-        GetEntity()->SetPos(sf::Vector2f{1000.f, 1000.f});
+        death = false;
+        //GetEntity()->SetPos(sf::Vector2f{1000.f, 1000.f});
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }
