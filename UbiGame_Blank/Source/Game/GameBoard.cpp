@@ -173,6 +173,7 @@ void GameBoard::Update()
 		currentEnemies = 1;
 		currentPongs = 1;
     }
+    m_score->GetComponent<GameEngine::TextRenderComponent>()->SetString("Score :" + std::to_string(enemyDeathCount));
 }
 
 void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 
