@@ -15,7 +15,7 @@ namespace Game
         virtual void OnAddToWorld() override;
         GameEngine::Entity* player = nullptr;
         bool death = false;
-        Game::HookComponent*hook = nullptr;
+        float hook = nullptr;
         float rooted = 0.f;
     };
 }

@@ -79,8 +79,12 @@ void EnemyMovementComponent::Update()
         GetEntity()->dodging = false;
         GetEntity()->hooking = false;
         GetEntity()->SetPos(hook->GetEntity()->GetPos());
+        if (hook->retractTime < 0.1f) {
+            hook = nullptr;
+        }
     } else {
-        GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
+        
+        //GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }
