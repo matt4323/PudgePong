@@ -7,20 +7,23 @@
 #include <math.h>
 #include "../../GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
 
+
 using namespace Game;
 
 void PlayerMovementComponent::Update()
 {
     if (GetEntity()->dodging) {
         death = false;
+        rooted = false;
     }
 
     if (!death) {
-    Component::Update();
-
     
+    Component::Update();
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
+
+        if (rooted <= 0.f) {
 
     //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
@@ -74,14 +77,18 @@ void PlayerMovementComponent::Update()
     
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+        } else {
+            rooted -= dt;
+        }
     } else if (hook != nullptr) {
         GetEntity()->isAbility = true;
         GetEntity()->netting = false;
         GetEntity()->dodging = false;
         GetEntity()->hooking = false;
-        GetEntity()->SetPosition(hook->GetEntity()->GetPos());
+        GetEntity()->SetPos(hook->GetEntity()->GetPos());
     } else {
-        
+        GetEntity()->SetPos(sf::Vector2f{350.f, 700.f});
+        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }
 

@@ -28,12 +28,12 @@ void GameBoard::CreatePlayer()
     //Adding CollidingPhysicsComponent to Player
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (m_player->AddComponent<GameEngine::CollidablePhysicsComponent>());
-    collisionTyper->type="pudge";
+    collisionTyper->type="player";
 
 }
 
 void GameBoard::CreateEnemy(){
-    m_enemy = new GameEngine::Entity();
+    GameEngine::Entity* m_enemy = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(m_enemy);
     m_enemy->SetPos(sf::Vector2f(550.0f, (float)(rand() % 600 + 50)));
     m_enemy->SetSize(sf::Vector2f(64.0f, 64.0f));
@@ -51,7 +51,7 @@ void GameBoard::CreateEnemy(){
 
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>());
-    collisionTyper->type="pudge"; //give enemy pudge(s) collision type of "pudge"
+    collisionTyper->type="enemy"; //give enemy pudge(s) collision type of "pudge"
 }
 
 void GameBoard::CreateBall(){

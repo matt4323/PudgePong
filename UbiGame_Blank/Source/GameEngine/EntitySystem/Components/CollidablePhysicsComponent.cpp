@@ -92,10 +92,13 @@ void CollidablePhysicsComponent::sort_collision(CollidableComponent* collider)
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 2;
 	} else if (collider->type == "wall3" && type =="pongball") {
 		GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
-	} else if (collider->type == "pudge" && type == "hook") {
+	} else if (collider->type == "player" && type == "EnemyHook") {
 		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->death = true;
 		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->hook = GetEntity()->GetComponent<Game::HookComponent>();
-	} else if (collider->type == "hook" && type =="pudge") {
+	} else if (collider->type == "enemy" && type == "PlayerHook") {
+		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->death = true;
+		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->hook = GetEntity()->GetComponent<Game::HookComponent>();
+	} else if (collider->type == "hook" && type =="player") {
 
 	} else if (collider->type == "hook" && type =="pongball") {
 

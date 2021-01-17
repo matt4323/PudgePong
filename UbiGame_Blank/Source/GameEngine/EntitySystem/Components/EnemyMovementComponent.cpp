@@ -7,20 +7,25 @@
 #include <math.h>
 #include "../../GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
 
+
 using namespace Game;
 
 void EnemyMovementComponent::Update()
 {
+    
     Component::Update();
+    
+    if (!death) {
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
+
     timer -= dt;
     if(timer - dt <= 0){
         timer = (float)(rand() % 5);
         destination_x = (float)(rand() % 500 + 200);
         destination_y = (float)(rand() % 700);//random position on screen
     }
-
+    if (rooted <= 0.f) {
     //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
 
@@ -64,8 +69,20 @@ void EnemyMovementComponent::Update()
     if (pos_diff.x < 0){
         angle += 180;
     }
-    GetEntity()->SetRotation(angle);
-
+    GetEntity()->SetRotation(angle); 
+    } else {
+        rooted -= dt;
+    }
+    } else if (hook != nullptr) {
+        GetEntity()->isAbility = true;
+        GetEntity()->netting = false;
+        GetEntity()->dodging = false;
+        GetEntity()->hooking = false;
+        GetEntity()->SetPos(hook->GetEntity()->GetPos());
+    } else {
+        GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
+        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+    }
 }
 
 void EnemyMovementComponent::OnAddToWorld() {}

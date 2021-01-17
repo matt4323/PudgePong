@@ -15,5 +15,6 @@ namespace Game
         virtual void OnAddToWorld() override;
         bool death = false;
         Game::HookComponent*hook = nullptr;
+        float rooted = 0.f;
     };
 }
