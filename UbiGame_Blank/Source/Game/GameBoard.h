@@ -15,11 +15,13 @@ namespace Game
 	public:
 		GameBoard();
 		virtual ~GameBoard();
-
+		int enemyDeathCount = 0;
+		int numberOfEnemies = 1;
 		void Update();		
 		bool IsGameOver() { return false; }
 
 	private:
+
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		GameEngine::Entity* m_enemy;

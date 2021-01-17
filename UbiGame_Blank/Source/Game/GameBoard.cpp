@@ -115,7 +115,7 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	
+	numberOfEnemies = enemyDeathCount/5 + 1;
 }
 
 void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 
