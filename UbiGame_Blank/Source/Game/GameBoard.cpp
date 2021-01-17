@@ -67,7 +67,7 @@ void GameBoard::CreateBall(){
 
     GameEngine::CollidableComponent* collisionTyper = static_cast<GameEngine::CollidableComponent*>
         (ball->AddComponent<GameEngine::CollidableComponent>());
-    collisionTyper->type="ball"; //give enemy pudge(s) collision type of "pudge"
+    collisionTyper->type="pongball"; //give enemy pudge(s) collision type of "pudge"
 }
 
 void GameBoard::CreateBackground() {

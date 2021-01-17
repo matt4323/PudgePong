@@ -88,7 +88,7 @@ void CollidablePhysicsComponent::sort_collision(std::string type1)
 			GetEntity()->GetComponent<Game::PongBallComponent>()->collided = 3;
 		}
 
-	} else if (type1 == "pudge" && type =="hookEnemy") {
+	} else if (type1 == "pudge" && type == "hook") {
 
 	} else if (type1 == "hook" && type =="pudge") {
 
