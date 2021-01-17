@@ -70,9 +70,9 @@ void CollidablePhysicsComponent::Update()
 					pos.y += intersection.height;
 			}
 			if ((colComponent->type =="wall0" || colComponent->type =="wall1" || colComponent->type =="wall2" 
-			|| colComponent->type =="wall3" || colComponent->type =="river") && type=="pudge")
+			|| colComponent->type =="wall3" || colComponent->type =="river") && (type=="player" || type=="enemy"))
 				GetEntity()->SetPos(pos);
-			else if (colComponent->type =="pudge" && (type =="wall0" || type =="wall1" 
+			else if ((colComponent->type =="enemy" || colComponent->type =="player") && (type =="wall0" || type =="wall1" 
 			|| type =="wall2" || type =="wall3" || type =="river"))
 				GetEntity()->SetPos(pos);
 			
@@ -98,10 +98,9 @@ void CollidablePhysicsComponent::sort_collision(CollidableComponent* collider)
 	} else if (collider->type == "enemy" && type == "PlayerHook") {
 		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->death = true;
 		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->hook = GetEntity()->GetComponent<Game::HookComponent>();
-	} else if (collider->type == "hook" && type =="player") {
-
 	} else if (collider->type == "hook" && type =="pongball") {
-
+		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_x = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_x;
+		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_y = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_y;
 	} else if (collider->type == "pongball" && type =="hook") {
 
 	} else if (collider->type == "pudge" && type =="pongball") {

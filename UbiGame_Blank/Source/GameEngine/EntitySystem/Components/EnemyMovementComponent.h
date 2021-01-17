@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../Component.h"
 #include "HookComponent.h"
+#include "../../../Game/GameBoard.h"
 
 namespace Game
 {
@@ -15,7 +16,8 @@ namespace Game
         virtual void OnAddToWorld() override;
         GameEngine::Entity* player = nullptr;
         bool death = false;
-        float hook = nullptr;
+        Game::HookComponent*hook = nullptr;
         float rooted = 0.f;
+        Game::GameBoard * gameBoard = nullptr;
     };
 }

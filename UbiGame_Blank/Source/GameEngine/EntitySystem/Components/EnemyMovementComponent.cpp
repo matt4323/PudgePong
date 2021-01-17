@@ -73,19 +73,20 @@ void EnemyMovementComponent::Update()
     } else {
         rooted -= dt;
     }
-    } else if (hook != nullptr) {
-        GetEntity()->isAbility = true;
-        GetEntity()->netting = false;
-        GetEntity()->dodging = false;
-        GetEntity()->hooking = false;
-        GetEntity()->SetPos(hook->GetEntity()->GetPos());
-        if (hook->retractTime < 0.1f) {
-            hook = nullptr;
-        }
+    } else if (false) {
+        //GetEntity()->isAbility = true;
+        //GetEntity()->netting = false;
+        //GetEntity()->dodging = false;
+        //GetEntity()->hooking = false;
+        //GetEntity()->SetPos(hook->GetEntity()->GetPos());
+        //if (hook->retractTime < 0.5f) {
+          //  hook = nullptr;
+        //}
     } else {
         
         //GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
-        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+        gameBoard->enemyDeathCount ++;
+        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }
 

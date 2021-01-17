@@ -62,6 +62,7 @@ void GameBoard::CreateEnemy(){
 
     enemyMovement->player = m_player;
     enemyAbility->player = m_player;
+    enemyMovement->gameBoard = this;
 
     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_enemy->AddComponent<GameEngine::SpriteRenderComponent>());
 
