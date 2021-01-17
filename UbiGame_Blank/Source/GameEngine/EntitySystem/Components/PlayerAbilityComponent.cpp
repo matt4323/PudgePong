@@ -55,6 +55,10 @@ void PlayerAbilityComponent::Update()
                     hook = static_cast<HookComponent*>
                     (e->AddComponent<HookComponent>());
 
+                    e->AddComponent<GameEngine::CollidableComponent>(); //hoping to god this adds the collision box
+
+                    GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+                    (e->AddComponent<GameEngine::SpriteRenderComponent>());
                     GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
 
                     spriteRender->SetFillColor(sf::Color::Transparent);
