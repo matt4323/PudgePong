@@ -21,9 +21,8 @@ namespace Game
 		int currentPongs = 1;
 		void Update();		
 		bool IsGameOver() { return false; }
-
+		void RestartGame();
 	private:
-
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		//GameEngine::Entity* m_enemy;

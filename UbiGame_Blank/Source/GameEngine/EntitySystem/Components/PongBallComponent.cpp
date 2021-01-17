@@ -17,6 +17,7 @@ void PongBallComponent::Update()
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
+    if (rooted <= 0.0f) {
         //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
 
@@ -42,7 +43,10 @@ void PongBallComponent::Update()
     displacement.y += inputAmount * destination_y * dt;
 
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
-    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*75);
+    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*1325);
+    } else {
+        rooted -= dt;
+    }
 }
 
 void PongBallComponent::OnAddToWorld() {}
