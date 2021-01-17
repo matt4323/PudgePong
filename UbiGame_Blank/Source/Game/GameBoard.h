@@ -22,8 +22,8 @@ namespace Game
 		void Update();		
 		bool IsGameOver() { return false; }
 		void CreateScore();
+		void RestartGame();
 	private:
-
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		GameEngine::Entity* m_text;

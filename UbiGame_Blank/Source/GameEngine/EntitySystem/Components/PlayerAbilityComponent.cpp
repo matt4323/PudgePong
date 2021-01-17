@@ -114,6 +114,10 @@ void PlayerAbilityComponent::Update()
                     spriteRender->SetFillColor(sf::Color::Transparent);
                     spriteRender->SetTexture(GameEngine::eTexture::Net);
 
+                    GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+            (e->AddComponent<GameEngine::CollidablePhysicsComponent>());
+            collisionTyper->type = "Net";
+
                     net->liveTime = 2.5f;
                     net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);
                     net->destination_y = static_cast<float>(sf::Mouse::getPosition().y);

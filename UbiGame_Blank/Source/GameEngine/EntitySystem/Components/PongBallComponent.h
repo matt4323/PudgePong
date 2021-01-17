@@ -11,5 +11,6 @@ namespace Game
             int collided = -1;
             virtual void Update() override;
             virtual void OnAddToWorld() override;
+            float rooted = 0.0f;
     };
 }

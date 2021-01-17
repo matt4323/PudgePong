@@ -49,9 +49,9 @@ void EnemyAbilityComponent::Update()
             e->SetSize(sf::Vector2f(32.0f, 32.0f));
             hook = static_cast<HookComponent*>(e->AddComponent<HookComponent>());
 
-            //GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
-            //(e->AddComponent<GameEngine::CollidablePhysicsComponent>());
-            //collisionTyper->type = "EnemyHook";
+            GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
+            (e->AddComponent<GameEngine::CollidablePhysicsComponent>());
+            collisionTyper->type = "EnemyHook";
 
             GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(e->AddComponent<GameEngine::SpriteRenderComponent>());
 
@@ -77,8 +77,8 @@ void EnemyAbilityComponent::Update()
             displacement.x += (pos_diff.x / vector_length);
             displacement.y += (pos_diff.y / vector_length);
 
-            hook->liveTime = 2.5f;
-            hook->retractTime = 2.1f;
+            hook->liveTime = 1.65f;
+            hook->retractTime = 1.1f;
             hook->destination_x = displacement.x;
             hook->destination_y = displacement.y;
 

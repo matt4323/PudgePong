@@ -89,6 +89,7 @@ void GameBoard::CreateEnemy(){
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>());
     collisionTyper->type="enemy"; //give enemy pudge(s) collision type of "pudge"
+
 }
 
 void GameBoard::CreateBall(){
@@ -109,6 +110,7 @@ void GameBoard::CreateBall(){
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (ball->AddComponent<GameEngine::CollidablePhysicsComponent>());
     collisionTyper->type="pongball"; //give enemy pudge(s) collision type of "pudge"
+
 }
 
 void GameBoard::CreateBackground() {
@@ -165,7 +167,12 @@ void GameBoard::Update()
             CreateBall();
         }
     }
-
+    if (m_player->GetComponent<Game::PlayerMovementComponent>()->death) {
+        enemyDeathCount = 0;
+		numberOfEnemies = 1;
+		currentEnemies = 1;
+		currentPongs = 1;
+    }
 }
 
 void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 

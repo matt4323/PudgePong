@@ -14,7 +14,6 @@ void PlayerMovementComponent::Update()
 {
     if (GetEntity()->dodging) {
         death = false;
-        rooted = false;
     }
 
     if (!death) {
@@ -22,14 +21,9 @@ void PlayerMovementComponent::Update()
     Component::Update();
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
-
-        if (rooted <= 0.f) {
-
-    //By default the displacement is 0,0
-    sf::Vector2f displacement{ 0.0f,0.0f };
-
-    //The amount of speed that we will apply when input is received
     
+        if (rooted <= 0.f) {
+    sf::Vector2f displacement{ 0.0f,0.0f };
 
     sf::Vector2f mousePos{ static_cast<float>(sf::Mouse::getPosition().x),  static_cast<float>(sf::Mouse::getPosition().y) };
     sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
@@ -83,7 +77,7 @@ void PlayerMovementComponent::Update()
     } else if (false) {
 
     } else {
-        GetEntity()->SetPos(sf::Vector2f{350.f, 700.f});
+        GetEntity()->SetPos(sf::Vector2f{1000.f, 1000.f});
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }

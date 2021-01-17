@@ -27,7 +27,7 @@ void NetComponent::Update()
 
     float vector_length = sqrt(pos_diff.x * pos_diff.x + pos_diff.y * pos_diff.y);
 
-    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*5);
+    GetEntity()->SetRotation(GetEntity()->GetRot() + dt*300);
 
     if (liveTime > 0) {
         displacement.x += inputAmount * (pos_diff.x / vector_length) * dt;
