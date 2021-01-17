@@ -95,9 +95,11 @@ void EnemyAbilityComponent::Update()
         spriteRender->SetFillColor(sf::Color::Transparent);
         spriteRender->SetTexture(GameEngine::eTexture::Player);
 
+        sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
+
         net->liveTime = 3.5f;
-        net->destination_x = player->GetPos().x;
-        net->destination_y = player->GetPos().y;
+        net->destination_x = player->GetPos().x + windowPos.x;
+        net->destination_y = player->GetPos().y + windowPos.y;
         GetEntity()->netDown = 10.f;
         GetEntity()->netting = false;
     }
