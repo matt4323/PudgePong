@@ -74,7 +74,7 @@ void CollidablePhysicsComponent::Update()
 	}
 }
 
-void sort_collision(std::string type1) 
+void CollidablePhysicsComponent::sort_collision(std::string type1) 
 {
 	//if (type1 == "pongball" && type =="wall")
 		//insert app. call here;
