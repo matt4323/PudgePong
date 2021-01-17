@@ -6,6 +6,7 @@
 #include "../GameEngine/EntitySystem/Components/EnemyMovementComponent.h"
 #include "../GameEngine/EntitySystem/Components/PongBallComponent.h"
 #include "../GameEngine/EntitySystem/Components/EnemyAbilityComponent.h"
+#include "../GameEngine/EntitySystem/Components/TextRenderComponent.h"
 
 using namespace Game;
 
@@ -30,6 +31,23 @@ void GameBoard::CreatePlayer()
         (m_player->AddComponent<GameEngine::CollidablePhysicsComponent>());
     collisionTyper->type="player";
 
+}
+
+void GameBoard::CreateText()
+{
+    m_text = new GameEngine::Entity();
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(m_text);
+
+    m_text->SetPos(sf::Vector2f(100.f, 680.0f));
+    m_text->SetSize(sf::Vector2f(300.f, 20.f));
+
+    GameEngine::TextRenderComponent* textRender = static_cast<GameEngine::TextRenderComponent*>
+    (m_text->AddComponent<GameEngine::TextRenderComponent>());
+
+    textRender->SetString("Move - Click, Hook - Q, Net - W");
+    textRender->SetFont("OptimusPrinceps.ttf");
+    textRender->SetCharacterSizePixels(20);
+    textRender->SetColor(sf::Color::Black);
 }
 
 void GameBoard::CreateEnemy(){
@@ -95,7 +113,7 @@ GameBoard::GameBoard()
     CreateBackground();
     CreateEnemy();
     CreateBall();
-    
+    CreateText();
 
     //ENVIRONMENTAL HITBOXES 
     CreateObstacle(0,350,50,700,"wall0"); //left wall hitbox
