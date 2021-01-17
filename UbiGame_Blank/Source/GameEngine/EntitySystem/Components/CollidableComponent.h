@@ -1,6 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Component.h"
-#include "string.h"
+#include <string>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 
