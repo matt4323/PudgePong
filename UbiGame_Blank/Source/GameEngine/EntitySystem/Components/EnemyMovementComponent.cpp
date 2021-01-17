@@ -87,6 +87,7 @@ void EnemyMovementComponent::Update()
         //GetEntity()->SetPos(sf::Vector2f(64.0f, 64.0f));
         gameBoard->enemyDeathCount ++;
         gameBoard->currentEnemies --;
+        score->GetComponent<Game::TextRenderComponent>()->SetString("Score: " + std::to_string(gameBoard->enemyDeathCount));
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
     }
 }

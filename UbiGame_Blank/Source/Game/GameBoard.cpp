@@ -50,6 +50,23 @@ void GameBoard::CreateText()
     textRender->SetColor(sf::Color::Black);
 }
 
+void GameBoard::CreateScore(){
+    m_score = new GameEngine::Entity();
+    GameEngine::GameEngineMain::GetInstance()->AddEntity(m_score);
+
+    m_score->SetPos(sf::Vector2f(300.f, 10.0f));
+    m_score->SetSize(sf::Vector2f(50.f, 30.f));
+
+    GameEngine::TextRenderComponent* textRender = static_cast<GameEngine::TextRenderComponent*>
+    (m_score->AddComponent<GameEngine::TextRenderComponent>());
+
+    std::string score = "Score: " + std::to_string(enemyDeathCount);
+    textRender->SetString(score);
+    textRender->SetFont("OptimusPrinceps.ttf");
+    textRender->SetCharacterSizePixels(30);
+    textRender->SetColor(sf::Color::Black);
+}
+
 void GameBoard::CreateEnemy(){
     GameEngine::Entity* m_enemy = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(m_enemy);
@@ -61,6 +78,7 @@ void GameBoard::CreateEnemy(){
     Game::EnemyAbilityComponent* enemyAbility = static_cast<Game::EnemyAbilityComponent*>(m_enemy->AddComponent<Game::EnemyAbilityComponent>());
 
     enemyMovement->player = m_player;
+    enemyMovement->score = m_score;
     enemyAbility->player = m_player;
     enemyMovement->gameBoard = this;
 
@@ -115,7 +133,7 @@ GameBoard::GameBoard()
     CreateEnemy();
     CreateBall();
     CreateText();
-
+    CreateScore();
     //ENVIRONMENTAL HITBOXES 
     CreateObstacle(0,350,50,700,"wall0"); //left wall hitbox
     CreateObstacle(350,0,700,50,"wall1"); //top wall hitbox
@@ -132,8 +150,10 @@ GameBoard::~GameBoard()
 }
 
 
+
 void GameBoard::Update()
-{	
+{
+
     if (currentEnemies == 0) {
         currentEnemies = enemyDeathCount/5 + 1;
 
@@ -145,6 +165,7 @@ void GameBoard::Update()
             CreateBall();
         }
     }
+
 }
 
 void GameBoard::CreateObstacle(float x_cord, float y_cord,float width, float height, std::string object_type) 

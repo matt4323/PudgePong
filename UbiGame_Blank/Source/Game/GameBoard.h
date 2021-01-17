@@ -21,13 +21,13 @@ namespace Game
 		int currentPongs = 1;
 		void Update();		
 		bool IsGameOver() { return false; }
-
+		void CreateScore();
 	private:
 
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
-		//GameEngine::Entity* m_enemy;
 		GameEngine::Entity* m_text;
+		GameEngine::Entity* m_score;
 		void CreateText();
 		void CreateBackground();
 		void CreateEnemy();

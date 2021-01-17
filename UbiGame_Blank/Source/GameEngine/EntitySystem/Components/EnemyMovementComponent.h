@@ -15,6 +15,7 @@ namespace Game
         virtual void Update() override;
         virtual void OnAddToWorld() override;
         GameEngine::Entity* player = nullptr;
+        GameEngine::Entity* score = nullptr;
         bool death = false;
         Game::HookComponent*hook = nullptr;
         float rooted = 0.f;
