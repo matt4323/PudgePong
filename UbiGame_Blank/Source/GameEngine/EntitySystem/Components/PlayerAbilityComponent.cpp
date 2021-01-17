@@ -63,7 +63,7 @@ void PlayerAbilityComponent::Update()
                     collisionTyper->type="PlayerHook";
 
                     spriteRender->SetFillColor(sf::Color::Transparent);
-                    spriteRender->SetTexture(GameEngine::eTexture::Player);
+                    spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
                     sf::Vector2f displacement{ 0.0f,0.0f };
 
@@ -112,7 +112,7 @@ void PlayerAbilityComponent::Update()
                     GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
                     
                     spriteRender->SetFillColor(sf::Color::Transparent);
-                    spriteRender->SetTexture(GameEngine::eTexture::Player);
+                    spriteRender->SetTexture(GameEngine::eTexture::Net);
 
                     net->liveTime = 2.5f;
                     net->destination_x = static_cast<float>(sf::Mouse::getPosition().x);
