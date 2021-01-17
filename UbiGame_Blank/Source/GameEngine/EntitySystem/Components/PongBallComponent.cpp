@@ -26,13 +26,13 @@ void PongBallComponent::Update()
     displacement.x += inputAmount * destination_x * dt;
     displacement.y += inputAmount * destination_y * dt;
 
-    if (collided = 0) {
+    if (collided == 0) {
         destination_x *= -1;
-    } else if (collided = 1) {
+    } else if (collided == 1) {
         destination_y *= -1;
-    } else if (collided = 2) {
+    } else if (collided == 2) {
         destination_x *= -1;
-    } else if (collided = 2) {
+    } else if (collided == 2) {
         destination_y *= -1;
     }
 

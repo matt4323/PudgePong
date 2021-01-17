@@ -4,6 +4,7 @@
 #include "../GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 #include "../GameEngine/EntitySystem/Components/PlayerAbilityComponent.h"
 #include "../GameEngine/EntitySystem/Components/EnemyMovementComponent.h"
+#include "../GameEngine/EntitySystem/Components/PongBallComponent.h"
 
 using namespace Game;
 
@@ -50,7 +51,7 @@ void GameBoard::CreateEnemy(){
 }
 
 void GameBoard::CreateBall(){
-    Entity* ball = new GameEngine::Entity();
+    GameEngine::Entity* ball = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(ball);
     ball->SetPos(sf::Vector2f(350.0f, (float)(rand() % 500 + 100)));
     ball->SetSize(sf::Vector2f(32.0f, 32.0f));
