@@ -80,12 +80,8 @@ void PlayerMovementComponent::Update()
         } else {
             rooted -= dt;
         }
-    } else if (hook != nullptr) {
-        GetEntity()->isAbility = true;
-        GetEntity()->netting = false;
-        GetEntity()->dodging = false;
-        GetEntity()->hooking = false;
-        GetEntity()->SetPos(hook->GetEntity()->GetPos());
+    } else if (false) {
+
     } else {
         GetEntity()->SetPos(sf::Vector2f{350.f, 700.f});
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());

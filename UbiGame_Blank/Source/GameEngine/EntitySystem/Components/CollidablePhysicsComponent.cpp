@@ -98,15 +98,21 @@ void CollidablePhysicsComponent::sort_collision(CollidableComponent* collider)
 	} else if (collider->type == "enemy" && type == "PlayerHook") {
 		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->death = true;
 		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->hook = GetEntity()->GetComponent<Game::HookComponent>();
-	} else if (collider->type == "hook" && type =="pongball") {
+	} else if (collider->type == "PlayerHoook" && type =="pongball") {
+		std::cout << "AAAA";
 		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_x = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_x;
 		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_y = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_y;
-	} else if (collider->type == "pongball" && type =="hook") {
-
-	} else if (collider->type == "pudge" && type =="pongball") {
-
-	} else if (collider->type == "pongball" && type =="pudge") {
-
+	} else if (collider->type == "EnemyHoook" && type =="pongball") {
+		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_x = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_x;
+		GetEntity()->GetComponent<Game::PongBallComponent>()->destination_y = collider->GetEntity()->GetComponent<Game::HookComponent>()->destination_y;
+	} else if (collider->type == "enemy" && type =="pongball") {
+		collider->GetEntity()->GetComponent<Game::EnemyMovementComponent>()->death = true;
+	} else if (collider->type == "pongball" && type =="player") {
+		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->death = true;
+	} else if (collider->type == "net" && type =="player") {
+		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->rooted = 1.4f;
+	} else if (collider->type == "net" && type =="enemy") {
+		collider->GetEntity()->GetComponent<Game::PlayerMovementComponent>()->rooted = 1.4f;
 	}
 				
 }
