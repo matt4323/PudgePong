@@ -38,13 +38,13 @@ void GameBoard::CreateText()
     m_text = new GameEngine::Entity();
     GameEngine::GameEngineMain::GetInstance()->AddEntity(m_text);
 
-    m_text->SetPos(sf::Vector2f(100.f, 680.0f));
+    m_text->SetPos(sf::Vector2f(100.f, 670.0f));
     m_text->SetSize(sf::Vector2f(300.f, 20.f));
 
     GameEngine::TextRenderComponent* textRender = static_cast<GameEngine::TextRenderComponent*>
     (m_text->AddComponent<GameEngine::TextRenderComponent>());
 
-    textRender->SetString("Move - Click, Hook - Q, Net - W");
+    textRender->SetString("Move - Click     Hook - Q     Net - W     Dodge - E");
     textRender->SetFont("OptimusPrinceps.ttf");
     textRender->SetCharacterSizePixels(20);
     textRender->SetColor(sf::Color::Black);
