@@ -56,7 +56,7 @@ void EnemyAbilityComponent::Update()
             GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(e->AddComponent<GameEngine::SpriteRenderComponent>());
 
             spriteRender->SetFillColor(sf::Color::Transparent);
-            spriteRender->SetTexture(GameEngine::eTexture::Player);
+            spriteRender->SetTexture(GameEngine::eTexture::Hook);
 
             sf::Vector2f displacement{ 0.0f,0.0f };
 
@@ -103,7 +103,7 @@ void EnemyAbilityComponent::Update()
         GameEngine::SpriteRenderComponent* spriteRender = e->AddComponent<GameEngine::SpriteRenderComponent>();
         
         spriteRender->SetFillColor(sf::Color::Transparent);
-        spriteRender->SetTexture(GameEngine::eTexture::Player);
+        spriteRender->SetTexture(GameEngine::eTexture::Net);
 
         sf::Vector2f windowPos{ static_cast<float>(GetEntity()->window->getPosition().x),  static_cast<float>(GetEntity()->window->getPosition().y) };
 

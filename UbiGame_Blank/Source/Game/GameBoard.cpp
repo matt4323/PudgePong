@@ -44,7 +44,7 @@ void GameBoard::CreateText()
     GameEngine::TextRenderComponent* textRender = static_cast<GameEngine::TextRenderComponent*>
     (m_text->AddComponent<GameEngine::TextRenderComponent>());
 
-    textRender->SetString("Move - Click     Hook - Q     Net - W     Dodge - E");
+    textRender->SetString("Move - Left Click     Hook - Q     Net - W     Dodge - E");
     textRender->SetFont("OptimusPrinceps.ttf");
     textRender->SetCharacterSizePixels(20);
     textRender->SetColor(sf::Color::Black);
@@ -66,7 +66,7 @@ void GameBoard::CreateEnemy(){
 
     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_enemy->AddComponent<GameEngine::SpriteRenderComponent>());
 
-    spriteRender->SetTexture(GameEngine::eTexture::Player);
+    spriteRender->SetTexture(GameEngine::eTexture::Enemy);
 
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (m_enemy->AddComponent<GameEngine::CollidablePhysicsComponent>());
@@ -86,7 +86,7 @@ void GameBoard::CreateBall(){
 
     GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(ball->AddComponent<GameEngine::SpriteRenderComponent>());
 
-    spriteRender->SetTexture(GameEngine::eTexture::Player);
+    spriteRender->SetTexture(GameEngine::eTexture::PongBall);
 
     GameEngine::CollidablePhysicsComponent* collisionTyper = static_cast<GameEngine::CollidablePhysicsComponent*>
         (ball->AddComponent<GameEngine::CollidablePhysicsComponent>());
