@@ -1,5 +1,8 @@
 # HackersNest
 
+Pudge Pong was created using this base framework, more information can be found at https://devpost.com/software/pudge-pong-0ezv46 and the following read me corresponds to the contest details.
+
+
 [![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)](https://github.com/UbisoftToronto/HackersNest/actions)
 
 Base framework for the Ubisoft Toronto Hackathon challenges
